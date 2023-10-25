@@ -10,25 +10,31 @@ private:
     int num;
 
 public:
+
+    Counter() {
+        num = 1;
+    }
+    Counter(int num) {
+        this->num = num;
+    }
+
+   
     void StartProgram() {
         std::cout << "Вы хотите указать начальное значение счётчика? Введите да или нет: ";
         std::cin >> YesorNot;
-        while (YesorNot != "да") {
-        if (YesorNot == "нет") {
-            std::cout << "Вы хотите указать начальное значение счётчика? Введите да или нет: ";
-            std::cin >> YesorNot;
+        while (YesorNot != "да" && YesorNot != "нет") {
+                std::cout << "Вы ввели неправильное значение \n";
+                std::cout << "Вы хотите указать начальное значение счётчика? Введите да или нет: ";
+                std::cin >> YesorNot;
+          } 
+        if (YesorNot == "да") {
+            std::cout << "Введите начальное значение счётчика: ";
+            std::cin >> num;
+           
         }
-        else {
-            std::cout << "Вы ввели неправильное значение \n";
-            std::cout << "Вы хотите указать начальное значение счётчика? Введите да или нет: ";
-            std::cin >> YesorNot;
-        }
-       } 
-
-       std::cout << "Введите начальное значение счётчика: ";
-       std::cin >> num;
+        
     }
-
+    
     void Calculation() {
         while (command != 'x' && command != 'х') {
             std::cout << "Введите команду ('+', '-', '=' или 'x'): ";
@@ -50,7 +56,7 @@ int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-
+    
     Counter counter;
     counter.StartProgram();
     counter.Calculation();
